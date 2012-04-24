@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{93ED29F5-0264-4CC0-FD77-F52F1D08BEB5}</ProjectGuid>
+	<ProjectGuid>{E51E0C7F-78CC-70BD-CCF1-297F16BF968E}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_5_0;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_OSX;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_1;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_OSX;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -45,17 +45,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Control.cs" />
-     <Compile Include="Assets\Script\Enum.cs" />
      <Compile Include="Assets\Script\Sync.cs" />
-     <Compile Include="Assets\Script\wrapper.cs" />
-     <None Include="Assets\Plugins\CCNxPlugin.bundle\Contents\Resources\crib.txt" />
-     <None Include="Assets\Plugins\CCNxPlugin.bundle\Contents\Resources\SyncSetup.txt" />
+     <Compile Include="Assets\Script\test.cs" />
      <None Include="Assets\Shader\glass.shader" />
      <None Include="Assets\Standard Assets\Gem Rendering\diamond shader.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{D52B06C2-D26C-59DD-D5A5-5A2CE3365B1A}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{840D14ED-223D-B89C-3886-4E35053D5457}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
