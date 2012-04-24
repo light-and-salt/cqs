@@ -13,8 +13,16 @@ public class Control : MonoBehaviour {
 		if(Sync.NewObj == true)
 		{
 			// read from Sync for the new object
-			print ("Got Object: " + Sync.NewObjInfo);
-			// next is just instantiating... simple things...
+			print ("Control: Got Object From Sync -- " + Sync.NewObjInfo);
+			
+			string [] split = Sync.NewObjInfo.Split(new Char [] {','});
+			int type = Int32.Parse(split[0]);
+			Vector3 pos = new Vector3(Int32.Parse(split[1]), Int32.Parse(split[2]), Int32.Parse(split[3]));
+			
+			GameObject NewGem;
+			NewGem = Instantiate(GemArray[type], pos, Quaternion.identity) as GameObject;
+			ObjID++;
+			MaxN++;
 			
 			Sync.NewObj = false;
 			Sync.NewObjInfo = null;
@@ -30,7 +38,7 @@ public class Control : MonoBehaviour {
 			ObjID++;
 			MaxN++;
 			System.String name = Sync.prefix + "/" + ObjID;
-			System.String content = "" + pos.x + "," + pos.y + "," + pos.z;
+			System.String content = "" + type + "," + pos.x + "," + pos.y + "," + pos.z;
 			print ("Writing " + name + " to repo: " + content);
 			CCN.WriteToRepo(name, content);
 		}   

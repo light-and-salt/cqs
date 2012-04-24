@@ -1,3 +1,4 @@
-Demo front end done.
-DllNotFound Exception came back when I updated libccn.a
-Is trying to figure out a solution
+CQS README
+by Zening Qu quzening@gmail.com 04/24/2012
+
+This is a little demo that drops a diamond to ground each time player presses "Space". I am using this demo to test the efficiency of the synchronization protocol of CCNx. This little demo is developed with Unity and CCNx code acted as a plugin.

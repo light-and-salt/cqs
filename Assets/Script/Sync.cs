@@ -19,38 +19,41 @@ public class Sync : MonoBehaviour {
 	
 	void Start()
 	{
-		if(Initialized == false)
+		int res = CCN.WriteSlice(prefix, topo);
+		print("WriteSlice returned: " + res);
+		if(res != 0)
 		{
-			int res = CCN.WriteSlice(prefix, topo);
-			print("WriteSlice returned: " + res);
-			if(res == 0)
-				Initialized = true;
-			else
-				Debug.Log ("WriteSlice Failed. -- CQS");
+			Debug.Log ("WriteSlice Failed. -- CQS");
 		}
 		
-		if(Initialized == true && NewObj == false)
-		{
+		StartCoroutine(ReadOneObj());
+				 
+	}
+	
+	
+	IEnumerator ReadOneObj() {
+        while (true) {
+			yield return new WaitForSeconds(1);
+            
+			if(NewObj == false)
+			{
+				int nextObjID = Control.MaxN + 1;
+				System.String name = prefix + "/" + nextObjID;
+				print ("Reading from repo: " + name);
+				IntPtr temp = CCN.ReadFromRepo(name);
+				print ("ReadFromRepo returns: " + temp);
+				System.String ObjTemp = Marshal.PtrToStringAnsi(temp);
+				if(ObjTemp != null)
+				{
+					NewObjInfo = ObjTemp;
+					NewObj = true;
+				}
+			}
 			
-		}
-			 
-	}
+            
+        }
+    }
 	
-	
-	
-	/*
-		
-	int nextObjID = Control.MaxN + 1;
-	IntPtr temp = CCN.ReadFromRepo(prefix + nextObjID);
-	print ("ReadFromRepo returns: " + temp);
-	System.String ObjTemp = Marshal.PtrToStringAnsi(temp);
-	if(ObjTemp != null)
-	{
-		NewObjInfo = ObjTemp;
-		NewObj = true;
-	}
-	
-	*/
 		
 	
 	
