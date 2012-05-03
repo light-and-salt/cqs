@@ -43,8 +43,6 @@ public class Sync : MonoBehaviour {
 		oThread = new Thread(new ThreadStart(run));
       	oThread.Start();
 		
-		
-		
 		Initialized = true;	 
 	}
 	
@@ -68,14 +66,14 @@ public class Sync : MonoBehaviour {
 	{
 		if(Initialized == true)
 		{	
+			
 			CCN.bufnode BufNode;
 			BufNode.name = "";
 			BufNode.content = "";
 			BufNode.next = IntPtr.Zero;
-			IntPtr temp = Marshal.AllocCoTaskMem(Marshal.SizeOf(BufNode));
-			Marshal.StructureToPtr(BufNode, temp, false);
 			
-			if(CCN.ReadFromBuffer(temp) == 0)
+			IntPtr temp = CCN.ReadFromBuffer();
+			if(temp != IntPtr.Zero)
 			{
 				BufNode = (CCN.bufnode)Marshal.PtrToStructure(temp, typeof(CCN.bufnode));
 				print(BufNode.name);
@@ -83,11 +81,8 @@ public class Sync : MonoBehaviour {
 				NewObjName = BufNode.name;
 				NewObjContent = BufNode.content;
 				Sync.NewObj = true;
+				Marshal.FreeCoTaskMem(temp);
 			}
-			
-			
-			// Marshal.FreeCoTaskMem(temp);
-			
 		}
 	}
 	

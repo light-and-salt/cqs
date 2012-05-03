@@ -40,7 +40,7 @@ public class CCN : MonoBehaviour {
 	public static extern void WriteToRepo( System.String name, System.String content);
 	
 	[DllImport ("CCNxPlugin")]
-	public static extern int ReadFromBuffer(IntPtr temp);
+	public static extern IntPtr ReadFromBuffer();
 	[DllImport ("CCNxPlugin")]
 	public static extern void PutToBuffer(string name, string content);
 	[DllImport ("CCNxPlugin")]

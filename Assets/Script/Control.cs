@@ -35,9 +35,18 @@ public class Control : MonoBehaviour {
 		if(Sync.NewObj == true)
 		{
 			// read from Sync for the new object
+			string shortname = "";
 			
 			int index = Sync.NewObjName.IndexOf('%');
-			string shortname = Sync.NewObjName.Remove (index-1);
+			
+			if(index == 0)
+			{
+				shortname = Sync.NewObjName;
+			}
+			else
+			{
+				shortname = Sync.NewObjName.Remove (index-1);
+			}
 			string content = Sync.NewObjContent;
 			print ("Control: Got Object From Sync -- " + shortname + ", " + content);
 			if(KnownDiamond(shortname) == false)
