@@ -15,13 +15,21 @@ public class CCN : MonoBehaviour {
     	public String buf;
 	}
 	
+	[StructLayout (LayoutKind.Sequential)]
+	public struct bufnode 
+	{
+		public string name;
+    	public string content;
+    	public IntPtr next;
+	}
+	
 	[DllImport ("CCNxPlugin")]
 	//[return: MarshalAs(UnmanagedType.LPStruct)]
 	public static extern IntPtr ccn_charbuf_create();
 	
 	
 	[DllImport ("CCNxPlugin")]
-	public static extern int WriteSlice(System.String prefix, System.String topo);
+	public static extern int WriteSlice(IntPtr h, System.String prefix, System.String topo);
 	// returns 0 for success
 	
 	[DllImport ("CCNxPlugin")]
@@ -29,6 +37,30 @@ public class CCN : MonoBehaviour {
 		
 		
 	[DllImport ("CCNxPlugin")]
-	public static extern void WriteToRepo(System.String name, System.String content);
+	public static extern void WriteToRepo( System.String name, System.String content);
+	
+	[DllImport ("CCNxPlugin")]
+	public static extern int ReadFromBuffer(IntPtr temp);
+	[DllImport ("CCNxPlugin")]
+	public static extern void PutToBuffer(string name, string content);
+	[DllImport ("CCNxPlugin")]
+	public static extern void testbuffer(int time);
+	
+	// from C#, mode = 'r', name = content = null
+	[DllImport ("CCNxPlugin")]
+	public static extern IntPtr Buffer(char mode, string name, string content);
+	
+	[DllImport ("CCNxPlugin")]
+	public static extern IntPtr GetHandle();
+	
+	[DllImport ("CCNxPlugin")]
+	public static extern int WatchOverRepo(IntPtr h, string p, string t);
+	
+	[DllImport ("CCNxPlugin")]
+	public static extern int ccn_run(IntPtr h, int timeout);
+	
+	[DllImport ("CCNxPlugin")]
+	public static extern int ccn_set_run_timeout(IntPtr h, int timeout);
+
 	
 }

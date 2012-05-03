@@ -46,7 +46,9 @@
   <ItemGroup>
      <Compile Include="Assets\Script\Control.cs" />
      <Compile Include="Assets\Script\Sync.cs" />
+     <Compile Include="Assets\Script\readbuffer.cs" />
      <Compile Include="Assets\Script\test.cs" />
+     <Compile Include="Assets\Script\trybuffer.cs" />
      <None Include="Assets\Shader\glass.shader" />
      <None Include="Assets\Standard Assets\Gem Rendering\diamond shader.shader" />
   </ItemGroup>
